@@ -9,19 +9,15 @@ import androidx.fragment.app.FragmentPagerAdapter
 class SectionsPagerAdapter(private val mContext: Context, fm: FragmentManager) :
     FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
     @androidx.annotation.StringRes
-    private val tabTitles = intArrayOf(R.string.tab_text_1, R.string.tab_text_2)
+    private val tabTitles =
+        intArrayOf(R.string.tab_text_1, R.string.tab_text_2, R.string.tab_text_3)
 
     override fun getCount(): Int {
-        return 2
+        return 3
     }
 
     override fun getItem(position: Int): Fragment {
-        var fragment: Fragment? = null
-        when (position) {
-            0 -> fragment = HomeFragment()
-            1 -> fragment = ProfileFragment()
-        }
-        return fragment as Fragment
+        return HomeFragment.newInstance(position + 1)
     }
 
     @Nullable
